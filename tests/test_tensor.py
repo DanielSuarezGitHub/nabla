@@ -9,3 +9,5 @@ def test_tensor_stores_data() -> None:
     expected = np.array([1.0, 2.0, 3.0])
 
     assert np.array_equal(tensor.data, expected)
+
+

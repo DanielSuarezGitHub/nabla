@@ -62,10 +62,36 @@ class Tensor:
         return self + other
 
     def __mul__(self, other: Tensor | npt.ArrayLike) -> Tensor:
-        raise NotImplementedError
+        other_tensor = other if isinstance(other, Tensor) else Tensor(other)
+
+        out = Tensor(
+            self.data * other_tensor.data,
+            requires_grad=self.requires_grad or other_tensor.requires_grad,
+            _prev=(self, other_tensor),
+            _op="mul",
+        )
+
+        def _backward() -> None:
+            if out.grad is None:
+                return
+            
+            if self.requires_grad:
+                contribution = sum_with_shape(out.grad * other_tensor.data, self.data.shape)
+                self.grad = accumulate_grad(self.grad, contribution)
+
+            if other_tensor.requires_grad:
+                contribution = sum_with_shape(out.grad * self.data, other_tensor.data.shape)
+                other_tensor.grad = accumulate_grad(other_tensor.grad, contribution)
+         
+         
+        out._backward = _backward
+
+        return out
+
+        
 
     def __rmul__(self, other: Tensor | npt.ArrayLike) -> Tensor:
-        raise NotImplementedError
+        return self * other
 
     def __neg__(self) -> Tensor:
         raise NotImplementedError

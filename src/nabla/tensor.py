@@ -54,7 +54,7 @@ class Tensor:
             
                     
 
-        out._backward = _backward;
+        out._backward = _backward
 
         return out
 

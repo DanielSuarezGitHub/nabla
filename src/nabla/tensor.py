@@ -8,6 +8,7 @@ import numpy as np
 from numpy.ma import ndim
 import numpy.typing as npt
 
+from nabla import tensor
 from nabla._utils import accumulate_grad, sum_with_shape
 
 
@@ -223,3 +224,6 @@ class Tensor:
 
         out._backward = _backward
         return out
+
+    def mean(self) -> Tensor:
+        return self.sum() * (1 / self.data.size)

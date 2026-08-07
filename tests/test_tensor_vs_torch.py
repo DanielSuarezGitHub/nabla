@@ -43,3 +43,14 @@ def test_matmul_backward_matches_torch() -> None:
 
     assert np.allclose(x.grad, tx.grad.numpy())
     assert np.allclose(w.grad, tw.grad.numpy())
+
+
+def test_mean_backward_with_torch() -> None:
+    x_data = [1.0, 2.0, 3.0, 4.0]
+    x = Tensor(x_data, requires_grad=True)
+    tx = torch.tensor(x_data, dtype=torch.float64, requires_grad=True)
+    x.mean().backward()
+    tx.mean().backward()
+    assert x.grad is not None
+    assert tx.grad is not None
+    assert np.allclose(x.grad, tx.grad.numpy())

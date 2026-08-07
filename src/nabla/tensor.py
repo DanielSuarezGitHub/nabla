@@ -204,3 +204,22 @@ class Tensor:
 
         out._backward = _backward
         return out
+
+    def sum(self) -> Tensor:
+        out = Tensor(
+                np.sum(self.data),
+                requires_grad=self.requires_grad,
+                _prev=(self,),
+                 _op='sum'
+                 )
+
+        def _backward() -> None:
+            if out.grad is None:
+                return
+
+            if self.requires_grad:
+                contribution = out.grad * np.ones_like(self.data)
+                self.grad = accumulate_grad(self.grad, contribution)
+
+        out._backward = _backward
+        return out

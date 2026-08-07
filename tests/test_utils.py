@@ -1,10 +1,7 @@
 import numpy as np
 import pytest
 
-from nabla._utils import sum_with_shape
-from nabla._utils import accumulate_grad
-
-
+from nabla._utils import accumulate_grad, sum_with_shape
 
 
 def test_accumulate_grad_initializes_none() -> None:

@@ -1,5 +1,7 @@
-import numpy as np
 from typing import cast
+
+import numpy as np
+
 from nabla.tensor import Tensor
 
 

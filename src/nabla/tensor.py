@@ -2,13 +2,10 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from numbers import Real
-from tarfile import data_filter
 
 import numpy as np
-from numpy.ma import ndim
 import numpy.typing as npt
 
-from nabla import tensor
 from nabla._utils import accumulate_grad, sum_with_shape
 
 

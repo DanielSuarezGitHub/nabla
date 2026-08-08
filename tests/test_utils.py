@@ -96,7 +96,7 @@ def test_accumulate_grad_adds_to_existing_gradient() -> None:
 )
 
 
-def test_sum_with_shape( grad: np.ndarray, target_shape: tuple[int, ...], expected: np.ndarray,) -> None:
+def test_sum_with_shape( grad: np.ndarray, target_shape: tuple[int, ...], expected: np.ndarray,) -> None:  # noqa: E501
     result = sum_with_shape(grad, target_shape)
 
     assert np.array_equal(result, expected)

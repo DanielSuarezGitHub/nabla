@@ -2,6 +2,7 @@ from typing import cast
 
 import numpy as np
 
+from nabla.nn.paramater import Parameter
 from nabla.tensor import Tensor
 
 
@@ -242,3 +243,10 @@ def test_linear_computation_path_backward_all_inputs() -> None:
         cast(np.ndarray, b.grad),
         [2.0, 2.0],
     )
+
+
+def test_parameter_requires_grad_by_default() -> None:
+    p = Parameter([1.0, 2.0])
+
+    assert p.requires_grad is True
+    assert isinstance(p, Tensor)

@@ -1,5 +1,6 @@
-from nabla.nn.module import Module
 from nabla.nn.parameter import Parameter
+
+from nabla.nn.module import Module
 from nabla.tensor import Tensor
 
 

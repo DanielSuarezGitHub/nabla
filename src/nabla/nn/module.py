@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import Any
 
 from nabla.nn.parameter import Parameter
 from nabla.tensor import Tensor
@@ -6,7 +7,7 @@ from nabla.tensor import Tensor
 
 class Module(ABC):
     @abstractmethod
-    def forward(self, x: Tensor) -> Tensor:
+    def forward(self, *args: Any, **kwargs: Any) -> Any:
         ...
 
     @abstractmethod

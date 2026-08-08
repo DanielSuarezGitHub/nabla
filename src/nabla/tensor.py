@@ -101,7 +101,7 @@ class Tensor:
         other_tensor = other if isinstance(other, Tensor) else Tensor(other)
         return other_tensor + (-self)
 
-    def __pow__(self, exponent: Real) -> Tensor:
+    def __pow__(self, exponent: int | float) -> Tensor:
         out = Tensor(
             self.data**exponent,
             requires_grad=self.requires_grad,

@@ -18,5 +18,5 @@ class Module(ABC):
         for parameter in self.parameters():
             parameter.zero_grad()
 
-    def __call__(self, x: Tensor) -> Tensor:
-        return self.forward(x)
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        return self.forward(*args, **kwargs)

@@ -1,7 +1,7 @@
 import numpy as np
 
 from nabla.nn.module import Module
-from nabla.nn.paramater import Parameter
+from nabla.nn.parameter import Parameter
 from nabla.tensor import Tensor
 
 

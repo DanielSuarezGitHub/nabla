@@ -2,7 +2,7 @@ from typing import cast
 
 import numpy as np
 
-from nabla.nn.paramater import Parameter
+from nabla.nn.parameter import Parameter
 from nabla.tensor import Tensor
 
 

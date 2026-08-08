@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from nabla.nn.paramater import Parameter
+from nabla.nn.parameter import Parameter
 from nabla.tensor import Tensor
 
 
